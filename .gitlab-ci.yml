@@ -1,34 +1,34 @@
 stages:
-  # - test
-  # - quality          # List of stages for jobs, and their order of execution
-  # - deploy
+  - test
+  - quality          # List of stages for jobs, and their order of execution
+  - deploy
   - publish
 
-# test-unit:
-#   stage: test
-#   script:
-#     - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
+test-unit:
+  stage: test
+  script:
+    - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
 
-# quality-sonarqube:
-#   stage: quality
-#   script: 
-#     - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
+quality-sonarqube:
+  stage: quality
+  script: 
+    - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
 
-# quality-security-check:
-#   stage: quality
-#   script: 
-#     - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
-#     - echo $CI_PROJECT_PATH
+quality-security-check:
+  stage: quality
+  script: 
+    - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
+    - echo $CI_PROJECT_PATH
 
 
-# deploy:      
-#   stage: deploy 
-#   variables:
-#     CKAN_EXT : "ckanext-dsfr" 
-#   trigger:
-#         project: ckan-mtes/gd-bastion
-#         branch: develop
-#         strategy: depend
+deploy:      
+  stage: deploy 
+  variables:
+    CKAN_EXT : "ckanext-dsfr" 
+  trigger:
+        project: ckan-mtes/gd-bastion
+        branch: develop
+        strategy: depend
 
 
 publish:
