@@ -1,0 +1,43 @@
+stages:
+  # - test
+  # - quality          # List of stages for jobs, and their order of execution
+  # - deploy
+  - publish
+
+# test-unit:
+#   stage: test
+#   script:
+#     - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
+
+# quality-sonarqube:
+#   stage: quality
+#   script: 
+#     - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
+
+# quality-security-check:
+#   stage: quality
+#   script: 
+#     - echo "stage -> ${CI_JOB_STAGE} \t job ->  ${CI_JOB_NAME}"
+#     - echo $CI_PROJECT_PATH
+
+
+# deploy:      
+#   stage: deploy 
+#   variables:
+#     CKAN_EXT : "ckanext-dsfr" 
+#   trigger:
+#         project: ckan-mtes/gd-bastion
+#         branch: develop
+#         strategy: depend
+
+
+publish:
+  stage: publish
+  variables:
+    CI_PROJECT_EXT_PATH : $CI_PROJECT_PATH
+    CI_GITHUB_PROJECT_PATH: "boukerramAhmed/ckanext-spatial_fr"
+  trigger:
+        project: ckan-mtes/gd-bastion
+        branch: prod
+        strategy: depend
+
